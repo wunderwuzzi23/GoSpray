@@ -17,7 +17,7 @@ import (
 	"time"
 
 	"github.com/wunderwuzzi23/wuzziutils/mailutil"
-	ldap "gopkg.in/ldap.v3"
+	ldap "github.com/go-ldap/ldap/v3"
 )
 
 type configuration struct {
@@ -127,6 +127,7 @@ func main() {
 		certs.AppendCertsFromPEM(pemCA)
 
 		config.tlsConfig = &tls.Config{
+			InsecureSkipVerify: true,
 			RootCAs: certs}
 	}
 
